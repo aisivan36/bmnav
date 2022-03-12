@@ -4,11 +4,11 @@ This is forked from [bmnav](https://github.com/edwnjos/bmnav) to migrate to null
 
 A very flexible Flutter implementation of the Bottom Navigation Bar.
 
-![BottomNavigationBar with label](https://raw.githubusercontent.com/edwnjos/bmnav/master/screenshots/with-label.gif)
+![BottomNavigationBar with label](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/with-label.gif)
 
-![BottomNavigationBar with label when selected](https://raw.githubusercontent.com/edwnjos/bmnav/master/screenshots/with-select-label.gif)
+![BottomNavigationBar with label when selected](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/with-select-label.gif)
 
-![BottomNavigationBar without label](https://raw.githubusercontent.com/edwnjos/bmnav/master/screenshots/without-label.gif)
+![BottomNavigationBar without label](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/without-label.gif)
 
 ## Get Started
 
@@ -17,9 +17,6 @@ Add `bmnav_null_safety` to your `pubspec.yaml` file:
 ```yaml
 dependencies:
   bmnav_null_safety:
-    git:
-      url: https://github.com/aisivan36/bmnav_null_safety.git
-
 ```
 
 Import `bmnav_null_safety` in your main.dart file:
