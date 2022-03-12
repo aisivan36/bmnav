@@ -4,11 +4,11 @@ This is forked from [bmnav](https://pub.dev/packages/bmnav) to migrate to null s
 
 A very flexible Flutter implementation of the Bottom Navigation Bar.
 
-![BottomNavigationBar with label](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/with-label.gif)
+![BottomNavigationBar with label](https://raw.githubusercontent.com/aisivan36/bmnav_null_safety/null_safety/screenshots/with-label.gif)
 
-![BottomNavigationBar with label when selected](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/with-select-label.gif)
+![BottomNavigationBar with label when selected](https://raw.githubusercontent.com/aisivan36/bmnav_null_safety/null_safety/screenshots/with-select-label.gif)
 
-![BottomNavigationBar without label](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/screenshots/without-label.gif)
+![BottomNavigationBar without label](https://raw.githubusercontent.com/aisivan36/bmnav_null_safety/null_safety/screenshots/without-label.gif)
 
 ## Get Started
 
