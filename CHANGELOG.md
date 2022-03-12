@@ -1,3 +1,7 @@
+## 1.0.1
+
+      -Fixed some issue
+
 ## 1.0.0 Null Safety
 
 - Forked and migrated to null safety

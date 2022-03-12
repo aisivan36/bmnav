@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bmnav_null_safety/bmnav.dart' as bmnav;
+import 'package:bmnav_null_safety/bmnav_null_safety.dart' as bmnav;
 
 void main() {
   runApp(

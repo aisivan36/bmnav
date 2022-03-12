@@ -1,6 +1,6 @@
 name: bmnav_null_safety
 description: A highly flexible Flutter implementation of the Bottom Navigation Bar.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/aisivan36/bmnav_null_safety
 
 environment:
