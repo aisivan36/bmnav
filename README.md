@@ -62,7 +62,3 @@ You can find a fully fledged example with navigation and custom styles [here](ht
 ## Contributions
 
 Feel free to contribute to this project.
-
-## Support
-
-If you found this project to be useful then please consider donating to help me continue maintaining this project and create new projects.
