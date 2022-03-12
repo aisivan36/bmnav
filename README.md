@@ -1,6 +1,6 @@
 # bmnav_null_safety
 
-This is forked from [bmnav](https://github.com/edwnjos/bmnav) to migrate to null safety, nothing else.
+This is forked from [bmnav](https://pub.dev/packages/bmnav) to migrate to null safety, nothing else.
 
 A very flexible Flutter implementation of the Bottom Navigation Bar.
 
