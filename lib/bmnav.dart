@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 
-final Color? defaultColor = Colors.grey[700];
+const Color defaultColor = Color(0xFF616161);
 
 const Color defaultOnSelectColor = Colors.blue;
 
@@ -11,9 +11,9 @@ class BottomNav extends StatefulWidget {
   final int? index;
   final void Function(int i)? onTap;
   final List<BottomNavItem>? items;
-  final double? elevation;
+  final double elevation;
   final IconStyle? iconStyle;
-  final Color? color;
+  final Color color;
   final LabelStyle? labelStyle;
 
   const BottomNav({
@@ -45,11 +45,11 @@ class BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
-    iconStyle = widget.iconStyle ?? IconStyle();
-    labelStyle = widget.labelStyle ?? LabelStyle();
+    iconStyle = widget.iconStyle ?? const IconStyle();
+    labelStyle = widget.labelStyle ?? const LabelStyle();
 
     return Material(
-        elevation: widget.elevation ?? 0.0,
+        elevation: widget.elevation,
         color: widget.color,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -109,24 +109,24 @@ class LabelStyle {
   final TextStyle? textStyle;
   final TextStyle? onSelectTextStyle;
 
-  LabelStyle(
+  const LabelStyle(
       {this.visible,
       this.showOnSelect,
       this.textStyle,
       this.onSelectTextStyle});
 
-  isVisible() {
+  bool isVisible() {
     return visible ?? true;
   }
 
-  isShowOnSelect() {
+  bool isShowOnSelect() {
     return showOnSelect ?? false;
   }
 
   // getTextStyle returns `textStyle` with default `fontSize` and
   // `color` values if not provided. if `textStyle` is null then
   // returns default text style
-  getTextStyle() {
+  TextStyle getTextStyle() {
     if (textStyle != null) {
       return TextStyle(
         /// [inherit] If null is false
@@ -149,13 +149,13 @@ class LabelStyle {
         fontFamily: textStyle?.fontFamily,
       );
     }
-    return TextStyle(color: defaultColor, fontSize: 12.0);
+    return const TextStyle(color: defaultColor, fontSize: 12.0);
   }
 
   // getOnSelectTextStyle returns `onSelectTextStyle` with
   // default `fontSize` and `color` values if not provided. if
   // `onSelectTextStyle` is null then returns default text style
-  getOnSelectTextStyle() {
+  TextStyle getOnSelectTextStyle() {
     if (onSelectTextStyle != null) {
       return TextStyle(
         /// [inherit] If null, is false
@@ -188,21 +188,22 @@ class IconStyle {
   final Color? color;
   final Color? onSelectColor;
 
-  IconStyle({this.size, this.onSelectSize, this.color, this.onSelectColor});
+  const IconStyle(
+      {this.size, this.onSelectSize, this.color, this.onSelectColor});
 
-  getSize() {
+  double getSize() {
     return size ?? 24.0;
   }
 
-  getSelectedSize() {
+  double getSelectedSize() {
     return onSelectSize ?? 24.0;
   }
 
-  getColor() {
+  Color getColor() {
     return color ?? defaultColor;
   }
 
-  getSelectedColor() {
+  Color getSelectedColor() {
     return onSelectColor ?? defaultOnSelectColor;
   }
 }
@@ -232,26 +233,31 @@ class BMNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: InkResponse(
-      key: key,
-      child: Padding(
+      child: InkResponse(
+        key: key,
+        child: Padding(
           padding: getPadding(),
-          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-            Icon(icon, size: iconSize, color: color),
-            label != null
-                ? Text(label ?? 'Empty', style: textStyle)
-                : Container()
-          ])),
-      highlightColor: Theme.of(context).highlightColor,
-      splashColor: Theme.of(context).splashColor,
-      radius: Material.defaultSplashRadius,
-      onTap: () => onTap!(),
-    ));
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(icon, size: iconSize, color: color),
+              label != null
+                  ? Text(label ?? 'Empty', style: textStyle)
+                  : const SizedBox(),
+            ],
+          ),
+        ),
+        highlightColor: Theme.of(context).highlightColor,
+        splashColor: Theme.of(context).splashColor,
+        radius: Material.defaultSplashRadius,
+        onTap: () => onTap!(),
+      ),
+    );
   }
 
   // getPadding returns the padding after adjusting the top and bottom
   // padding based on the fontsize and iconSize.
-  getPadding() {
+  EdgeInsets getPadding() {
     if (label != null) {
       final double p = ((56 - textStyle!.fontSize!) - iconSize!) / 2;
       return EdgeInsets.fromLTRB(0.0, p, 0.0, p);

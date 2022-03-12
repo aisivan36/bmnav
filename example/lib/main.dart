@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:bmnav_null_safety/bmnav.dart' as bmnav;
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Bottom Nav Demo',
-    home: const MainWidget(),
-    theme: ThemeData(primaryColor: Colors.green),
-  ));
+  runApp(
+    MaterialApp(
+      title: 'Bottom Nav Demo',
+      home: const MainWidget(),
+      theme: ThemeData(
+        primaryColor: Colors.green,
+      ),
+    ),
+  );
 }
 
 class MainWidget extends StatefulWidget {
@@ -41,7 +45,7 @@ class MainWidgetState extends State<MainWidget> {
       body: PageStorage(child: currentScreen, bucket: bucket),
       bottomNavigationBar: bmnav.BottomNav(
         index: currentTab,
-        labelStyle: bmnav.LabelStyle(visible: false),
+        labelStyle: const bmnav.LabelStyle(visible: false),
         onTap: (i) {
           setState(() {
             currentTab = i;
@@ -73,8 +77,10 @@ class HomeScreenState extends State<HomeScreen> {
       child: Container(
         color: Colors.blue,
         padding: const EdgeInsets.all(50.0),
-        child: const Text('Home',
-            style: TextStyle(color: Colors.white, fontSize: 24.0)),
+        child: const Text(
+          'Home',
+          style: TextStyle(color: Colors.white, fontSize: 24.0),
+        ),
       ),
     );
   }
@@ -94,8 +100,10 @@ class WorkoutsScreenState extends State<WorkoutsScreen> {
       child: Container(
         color: Colors.red,
         padding: const EdgeInsets.all(50.0),
-        child: const Text('Workouts',
-            style: TextStyle(color: Colors.white, fontSize: 24.0)),
+        child: const Text(
+          'Workouts',
+          style: TextStyle(color: Colors.white, fontSize: 24.0),
+        ),
       ),
     );
   }
@@ -115,8 +123,10 @@ class AccountScreenState extends State<AccountScreen> {
       child: Container(
         color: Colors.yellow[600],
         padding: const EdgeInsets.all(50.0),
-        child: const Text('Account',
-            style: TextStyle(color: Colors.white, fontSize: 24.0)),
+        child: const Text(
+          'Account',
+          style: TextStyle(color: Colors.white, fontSize: 24.0),
+        ),
       ),
     );
   }
@@ -136,8 +146,10 @@ class SettingsScreenState extends State<SettingsScreen> {
       child: Container(
         color: Colors.green,
         padding: const EdgeInsets.all(50.0),
-        child: const Text('Settings',
-            style: TextStyle(color: Colors.white, fontSize: 24.0)),
+        child: const Text(
+          'Settings',
+          style: TextStyle(color: Colors.white, fontSize: 24.0),
+        ),
       ),
     );
   }
