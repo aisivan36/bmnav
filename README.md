@@ -45,7 +45,7 @@ Widget build(BuildContext ctx) {
 }
 ```
 
-You can find a fully fledged example with navigation and custom styles [here](https://github.com/edwnjos/bmnav/blob/master/example/lib/main.dart).
+You can find a fully fledged example with navigation and custom styles [here](https://github.com/aisivan36/bmnav_null_safety/blob/null_safety/example/lib/main.dart).
 
 ## Props
 
