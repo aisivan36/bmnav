@@ -16,7 +16,10 @@ Add `bmnav_null_safety` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  bmnav: ^0.3.4
+  bmnav_null_safety:
+    git:
+      url: https://github.com/aisivan36/bmnav_null_safety.git
+
 ```
 
 Import `bmnav_null_safety` in your main.dart file:
