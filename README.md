@@ -1,6 +1,6 @@
 # bmnav_null_safety
 
-This is forked from bmnav to migrate to null safety, nothing else.
+This is forked from [bmnav](https://github.com/edwnjos/bmnav) to migrate to null safety, nothing else.
 
 A very flexible Flutter implementation of the Bottom Navigation Bar.
 
@@ -12,17 +12,17 @@ A very flexible Flutter implementation of the Bottom Navigation Bar.
 
 ## Get Started
 
-Add `bmanv` to your `pubspec.yaml` file:
+Add `bmnav_null_safety` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
   bmnav: ^0.3.4
 ```
 
-Import `bmnav` in your main.dart file:
+Import `bmnav_null_safety` in your main.dart file:
 
 ```dart
-import 'package:bmnav/bmnav.dart' as bmnav;
+import 'package:bmnav_null_safety/bmnav.dart' as bmnav;
 ```
 
 Implement `bmnav.BottomNav` in the `bottomNavigationBar` parameter in the Scaffold widget:
@@ -65,6 +65,4 @@ Feel free to contribute to this project.
 
 ## Support
 
-If you found this project to be useful then please consider donating to help me continue maintaining this project and create new projects. :)
-
-[![Paypal Donate Button](https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png)](https://www.paypal.me/edwnjos)
+If you found this project to be useful then please consider donating to help me continue maintaining this project and create new projects.
