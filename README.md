@@ -1,9 +1,8 @@
-# bmnav
+# bmnav_null_safety
 
-A very flexible Flutter implementation of the Bottom Navigation Bar. 
+This is forked from bmnav to migrate to null safety, nothing else.
 
-[![Pub](https://img.shields.io/pub/v/bmnav.svg)](https://pub.dartlang.org/packages/bmnav)
-[![PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/edwnjos)
+A very flexible Flutter implementation of the Bottom Navigation Bar.
 
 ![BottomNavigationBar with label](https://raw.githubusercontent.com/edwnjos/bmnav/master/screenshots/with-label.gif)
 
@@ -50,15 +49,15 @@ You can find a fully fledged example with navigation and custom styles [here](ht
 
 ## Props
 
-| Name              | Explanation                                                                       | Default                          |
-|-------------------|----------------------------------------------------------------------------|----------------------------------|
-| index             | starting index                                                             | 0                                |
-| onTap             | callback when a bottom nav item is pressed                                 | null                             |
-| items             | bottom nav items                                                           | null                             |
-| elevation         | elevation of bottom nav                                                    | 8.0                              |
-| color             | background color                                                           | Colors.white                     |
-| iconStyle         | icon styles (`size`, `onSelectSize`, `color`, `onSelectColor`)             | null                             |
-| labelStyle        | label styles (`visible`, `showOnSelect`, `textStyle`, `onSelectTextStyle`) | null                             |
+| Name       | Explanation                                                                | Default      |
+| ---------- | -------------------------------------------------------------------------- | ------------ |
+| index      | starting index                                                             | 0            |
+| onTap      | callback when a bottom nav item is pressed                                 | null         |
+| items      | bottom nav items                                                           | null         |
+| elevation  | elevation of bottom nav                                                    | 8.0          |
+| color      | background color                                                           | Colors.white |
+| iconStyle  | icon styles (`size`, `onSelectSize`, `color`, `onSelectColor`)             | null         |
+| labelStyle | label styles (`visible`, `showOnSelect`, `textStyle`, `onSelectTextStyle`) | null         |
 
 ## Contributions
 
