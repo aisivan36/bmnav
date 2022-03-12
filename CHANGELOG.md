@@ -1,4 +1,4 @@
-## 1.0.1 Null Safety
+## 1.0.0 Null Safety
 
 - Forked and migrated to null safety
 
