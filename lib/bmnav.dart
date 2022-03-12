@@ -1,41 +1,41 @@
 // Copyright (c) 2018 Edwin Jose. All rights reserved.
 // Licensed under the MIT license. See LICENSE file for full information.
 
-import 'package:flutter/material.dart' as md;
+import 'package:flutter/material.dart';
 
-final md.Color defaultColor = md.Colors.grey[700];
+final Color? defaultColor = Colors.grey[700];
 
-final md.Color defaultOnSelectColor = md.Colors.blue;
+const Color defaultOnSelectColor = Colors.blue;
 
-class BottomNav extends md.StatefulWidget {
-  final int index;
-  final void Function(int i) onTap;
-  final List<BottomNavItem> items;
-  final double elevation;
-  final IconStyle iconStyle;
-  final md.Color color;
-  final LabelStyle labelStyle;
+class BottomNav extends StatefulWidget {
+  final int? index;
+  final void Function(int i)? onTap;
+  final List<BottomNavItem>? items;
+  final double? elevation;
+  final IconStyle? iconStyle;
+  final Color? color;
+  final LabelStyle? labelStyle;
 
-  BottomNav({
+  const BottomNav({
+    Key? key,
     this.index,
     this.onTap,
     this.items,
     this.elevation = 8.0,
     this.iconStyle,
-    this.color = md.Colors.white,
+    this.color = Colors.white,
     this.labelStyle,
-  }) :
-    assert(items != null),
-    assert(items.length >= 2);
+  })  : assert(items != null && items.length >= 2),
+        super(key: key);
 
   @override
   BottomNavState createState() => BottomNavState();
 }
 
-class BottomNavState extends md.State<BottomNav> {
-  int currentIndex;
-  IconStyle iconStyle;
-  LabelStyle labelStyle;
+class BottomNavState extends State<BottomNav> {
+  int? currentIndex;
+  IconStyle? iconStyle;
+  LabelStyle? labelStyle;
 
   @override
   void initState() {
@@ -44,38 +44,43 @@ class BottomNavState extends md.State<BottomNav> {
   }
 
   @override
-  md.Widget build(md.BuildContext context) {
+  Widget build(BuildContext context) {
     iconStyle = widget.iconStyle ?? IconStyle();
     labelStyle = widget.labelStyle ?? LabelStyle();
-    
-    return md.Material(
-      elevation: widget.elevation,
-      color: widget.color,
-      child: md.Row(
-          mainAxisAlignment: md.MainAxisAlignment.spaceAround,
-          mainAxisSize: md.MainAxisSize.max,
-          children: widget.items.map((b) { 
-            final int i = widget.items.indexOf(b);
+
+    return Material(
+        elevation: widget.elevation ?? 0.0,
+        color: widget.color,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
+          children: widget.items!.map((b) {
+            final int i = widget.items!.indexOf(b);
             final bool selected = i == currentIndex;
 
             return BMNavItem(
               icon: b.icon,
-              iconSize: selected ? iconStyle.getSelectedSize() : iconStyle.getSize(),
-              label: parseLabel(b.label, labelStyle, selected),
+              iconSize: selected
+                  ? iconStyle?.getSelectedSize()
+                  : iconStyle?.getSize(),
+              label: parseLabel(b.label!, labelStyle!, selected),
               onTap: () => onItemClick(i),
-              textStyle: selected ? labelStyle.getOnSelectTextStyle() : labelStyle.getTextStyle(),
-              color: selected ? iconStyle.getSelectedColor() : iconStyle.getColor(),
+              textStyle: selected
+                  ? labelStyle?.getOnSelectTextStyle()
+                  : labelStyle?.getTextStyle(),
+              color: selected
+                  ? iconStyle?.getSelectedColor()
+                  : iconStyle?.getColor(),
             );
           }).toList(),
-        )
-    );
+        ));
   }
 
   onItemClick(int i) {
     setState(() {
       currentIndex = i;
     });
-    if (widget.onTap != null) widget.onTap(i);
+    if (widget.onTap != null) widget.onTap!(i);
   }
 
   parseLabel(String label, LabelStyle style, bool selected) {
@@ -92,24 +97,23 @@ class BottomNavState extends md.State<BottomNav> {
 }
 
 class BottomNavItem {
-  final md.IconData icon;
-  final String label;
+  final IconData? icon;
+  final String? label;
 
-  BottomNavItem(this.icon, {this.label});
+  const BottomNavItem({this.icon, this.label});
 }
 
 class LabelStyle {
-  final bool visible;
-  final bool showOnSelect;
-  final md.TextStyle textStyle;
-  final md.TextStyle onSelectTextStyle;
+  final bool? visible;
+  final bool? showOnSelect;
+  final TextStyle? textStyle;
+  final TextStyle? onSelectTextStyle;
 
-  LabelStyle({
-    this.visible,
-    this.showOnSelect,
-    this.textStyle,
-    this.onSelectTextStyle
-  });
+  LabelStyle(
+      {this.visible,
+      this.showOnSelect,
+      this.textStyle,
+      this.onSelectTextStyle});
 
   isVisible() {
     return visible ?? true;
@@ -124,27 +128,28 @@ class LabelStyle {
   // returns default text style
   getTextStyle() {
     if (textStyle != null) {
-      return md.TextStyle(
-        inherit: textStyle.inherit,
-        color: textStyle.color ?? defaultOnSelectColor,
-        fontSize: textStyle.fontSize ?? 12.0,
-        fontWeight: textStyle.fontWeight,
-        fontStyle: textStyle.fontStyle,
-        letterSpacing: textStyle.letterSpacing,
-        wordSpacing: textStyle.wordSpacing,
-        textBaseline: textStyle.textBaseline,
-        height: textStyle.height,
-        locale: textStyle.locale,
-        foreground: textStyle.foreground,
-        background: textStyle.background,
-        decoration: textStyle.decoration,
-        decorationColor: textStyle.decorationColor,
-        decorationStyle: textStyle.decorationStyle,
-        debugLabel: textStyle.debugLabel,
-        fontFamily: textStyle.fontFamily,
+      return TextStyle(
+        /// [inherit] If null is false
+        inherit: textStyle?.inherit ?? false,
+        color: textStyle?.color ?? defaultOnSelectColor,
+        fontSize: textStyle?.fontSize ?? 12.0,
+        fontWeight: textStyle?.fontWeight,
+        fontStyle: textStyle?.fontStyle,
+        letterSpacing: textStyle?.letterSpacing,
+        wordSpacing: textStyle?.wordSpacing,
+        textBaseline: textStyle?.textBaseline,
+        height: textStyle?.height,
+        locale: textStyle?.locale,
+        foreground: textStyle?.foreground,
+        background: textStyle?.background,
+        decoration: textStyle?.decoration,
+        decorationColor: textStyle?.decorationColor,
+        decorationStyle: textStyle?.decorationStyle,
+        debugLabel: textStyle?.debugLabel,
+        fontFamily: textStyle?.fontFamily,
       );
     }
-    return md.TextStyle(color: defaultColor, fontSize: 12.0);
+    return TextStyle(color: defaultColor, fontSize: 12.0);
   }
 
   // getOnSelectTextStyle returns `onSelectTextStyle` with
@@ -152,35 +157,36 @@ class LabelStyle {
   // `onSelectTextStyle` is null then returns default text style
   getOnSelectTextStyle() {
     if (onSelectTextStyle != null) {
-      return md.TextStyle(
-        inherit: onSelectTextStyle.inherit,
-        color: onSelectTextStyle.color ?? defaultOnSelectColor,
-        fontSize: onSelectTextStyle.fontSize ?? 12.0,
-        fontWeight: onSelectTextStyle.fontWeight,
-        fontStyle: onSelectTextStyle.fontStyle,
-        letterSpacing: onSelectTextStyle.letterSpacing,
-        wordSpacing: onSelectTextStyle.wordSpacing,
-        textBaseline: onSelectTextStyle.textBaseline,
-        height: onSelectTextStyle.height,
-        locale: onSelectTextStyle.locale,
-        foreground: onSelectTextStyle.foreground,
-        background: onSelectTextStyle.background,
-        decoration: onSelectTextStyle.decoration,
-        decorationColor: onSelectTextStyle.decorationColor,
-        decorationStyle: onSelectTextStyle.decorationStyle,
-        debugLabel: onSelectTextStyle.debugLabel,
-        fontFamily: onSelectTextStyle.fontFamily,
+      return TextStyle(
+        /// [inherit] If null, is false
+        inherit: onSelectTextStyle?.inherit ?? false,
+        color: onSelectTextStyle?.color ?? defaultOnSelectColor,
+        fontSize: onSelectTextStyle?.fontSize ?? 12.0,
+        fontWeight: onSelectTextStyle?.fontWeight,
+        fontStyle: onSelectTextStyle?.fontStyle,
+        letterSpacing: onSelectTextStyle?.letterSpacing,
+        wordSpacing: onSelectTextStyle?.wordSpacing,
+        textBaseline: onSelectTextStyle?.textBaseline,
+        height: onSelectTextStyle?.height,
+        locale: onSelectTextStyle?.locale,
+        foreground: onSelectTextStyle?.foreground,
+        background: onSelectTextStyle?.background,
+        decoration: onSelectTextStyle?.decoration,
+        decorationColor: onSelectTextStyle?.decorationColor,
+        decorationStyle: onSelectTextStyle?.decorationStyle,
+        debugLabel: onSelectTextStyle?.debugLabel,
+        fontFamily: onSelectTextStyle?.fontFamily,
       );
     }
-    return md.TextStyle(color: defaultOnSelectColor, fontSize: 12.0);
+    return const TextStyle(color: defaultOnSelectColor, fontSize: 12.0);
   }
 }
 
 class IconStyle {
-  final double size;
-  final double onSelectSize;
-  final md.Color color;
-  final md.Color onSelectColor;
+  final double? size;
+  final double? onSelectSize;
+  final Color? color;
+  final Color? onSelectColor;
 
   IconStyle({this.size, this.onSelectSize, this.color, this.onSelectColor});
 
@@ -201,60 +207,56 @@ class IconStyle {
   }
 }
 
-class BMNavItem extends md.StatelessWidget {
-  final md.IconData icon;
-  final double iconSize;
-  final String label;
-  final void Function() onTap;
-  final md.Color color;
-  final md.TextStyle textStyle;
+class BMNavItem extends StatelessWidget {
+  final IconData? icon;
+  final double? iconSize;
+  final String? label;
+  final void Function()? onTap;
+  final Color? color;
+  final TextStyle? textStyle;
 
-  BMNavItem({
+  const BMNavItem({
+    Key? key,
     this.icon,
     this.iconSize,
     this.label,
     this.onTap,
     this.color,
     this.textStyle,
-  }) : 
-    assert(icon != null),
-    assert(iconSize != null),
-    assert(color != null),
-    assert(onTap != null);
+  })  : assert(icon != null),
+        assert(iconSize != null),
+        assert(color != null),
+        assert(onTap != null),
+        super(key: key);
 
   @override
-  md.Widget build(md.BuildContext context) {
-
-    return md.Expanded(
-      child: md.InkResponse(
-        key: key,
-        child: md.Padding(
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: InkResponse(
+      key: key,
+      child: Padding(
           padding: getPadding(),
-          child: md.Column(
-            mainAxisSize: md.MainAxisSize.min,
-            children: <md.Widget>[
-              md.Icon(icon, size: iconSize, color: color),
-              label != null ? md.Text(label, style: textStyle) : md.Container()
-            ]
-          )
-        ),
-        highlightColor: md.Theme.of(context).highlightColor,
-        splashColor: md.Theme.of(context).splashColor,
-        radius: md.Material.defaultSplashRadius,
-        onTap: () => onTap(),
-      )
-    );
+          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+            Icon(icon, size: iconSize, color: color),
+            label != null
+                ? Text(label ?? 'Empty', style: textStyle)
+                : Container()
+          ])),
+      highlightColor: Theme.of(context).highlightColor,
+      splashColor: Theme.of(context).splashColor,
+      radius: Material.defaultSplashRadius,
+      onTap: () => onTap!(),
+    ));
   }
 
   // getPadding returns the padding after adjusting the top and bottom
   // padding based on the fontsize and iconSize.
   getPadding() {
     if (label != null) {
-      final double p = ((56-textStyle.fontSize)-iconSize)/2;
-      return md.EdgeInsets.fromLTRB(0.0, p, 0.0, p);
-    } 
-    return md.EdgeInsets.fromLTRB(
-      0.0, (56-iconSize)/2, 0.0, (56-iconSize)/2
-    );
+      final double p = ((56 - textStyle!.fontSize!) - iconSize!) / 2;
+      return EdgeInsets.fromLTRB(0.0, p, 0.0, p);
+    }
+    return EdgeInsets.fromLTRB(
+        0.0, (56 - iconSize!) / 2, 0.0, (56 - iconSize!) / 2);
   }
 }
