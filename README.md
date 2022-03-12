@@ -16,13 +16,16 @@ Add `bmanv` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  bmnav: ^0.3.4
+  bmnav_null_safety:
+    git:
+      url: https://github.com/aisivan36/bmnav_null_safety.git
+
 ```
 
 Import `bmnav` in your main.dart file:
 
 ```dart
-import 'package:bmnav/bmnav.dart' as bmnav;
+import 'package:bmnav_null_safety/bmnav.dart' as bmnav;
 ```
 
 Implement `bmnav.BottomNav` in the `bottomNavigationBar` parameter in the Scaffold widget:
